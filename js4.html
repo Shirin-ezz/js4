@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS4 - Odd Numbers and Sum in Range</title>
+    <script type="text/javascript">
+        // Function to execute after the page has fully loaded
+        window.onload = function() {
+            // Prompt the user for the start of the range
+            let start = prompt("Enter the start number of the range:");
+            start = parseInt(start);
+
+            // Prompt the user for the end of the range
+            let end = prompt("Enter the end number of the range:");
+            end = parseInt(end);
+
+            // Validate the inputs
+            if (isNaN(start) || isNaN(end)) {
+                document.getElementById("output").innerText = "Invalid input. Please enter valid numbers.";
+                return;
+            }
+
+            // Ensure start is less than or equal to end
+            if (start > end) {
+                // Swap the values if start is greater than end
+                let temp = start;
+                start = end;
+                end = temp;
+            }
+
+            let oddNumbers = [];
+            let sum = 0;
+
+            // Single loop to find odd numbers and calculate the sum
+            for (let i = start; i <= end; i++) {
+                sum += i; // Add the current number to the sum
+                if (i % 2 !== 0) { // Check if the number is odd
+                    oddNumbers.push(i); // Add to the oddNumbers array
+                }
+            }
+
+            // Prepare the output strings
+            let oddNumbersStr = oddNumbers.length > 0 ? oddNumbers.join(", ") : "No odd numbers in this range.";
+            let sumStr = "The sum of all numbers in the range is: " + sum;
+
+            // Display the results on the page
+            document.getElementById("oddNumbers").innerText = "Odd Numbers: " + oddNumbersStr;
+            document.getElementById("sum").innerText = sumStr;
+        };
+    </script>
+</head>
+<body>
+    <h1>Odd Numbers and Sum in Range</h1>
+    <p id="oddNumbers">Loading odd numbers...</p>
+    <p id="sum">Calculating sum...</p>
+</body>
+</html>
